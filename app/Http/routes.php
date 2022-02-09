@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tasks', function() {
+    echo "all tasks";
+});
+
+Route::get('/tasks/create', function() {
+    echo "form for new task create";
+});
+
+Route::post('/tasks', function() {
+    echo "store new task";
+});
+
+Route::delete('/tasks/{task}', function() {
+    echo "new delete task";
+});
