@@ -43,6 +43,11 @@ Route::post('/tasks', function(Illuminate\Http\Request $request) {
     return redirect(route('tasks.index'));
 })->name('tasks.store');
 
-Route::delete('/tasks/{task}', function() {
-    echo "new delete task";
+Route::delete('/task/{task}', function(App\Models\Task $task) {
+    $task->delete();
+
+    return redirect()->back();
+
 });
+
+Route::get('locale/{locale}', 'MainController@changeLocale')->name('locale');

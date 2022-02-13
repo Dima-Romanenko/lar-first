@@ -14,7 +14,7 @@
 
         <!-- Имя задачи -->
             <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">Задача</label>
+                <label for="task" class="col-sm-3 control-label">@lang('language.task')</label>
 
                 <div class="col-sm-6">
                     <input type="text" name="name" id="task" class="form-control" value="{{old('name')}}">
@@ -25,7 +25,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default">
-                        <i class="fa fa-plus"></i> Добавить задачу
+                        <i class="fa fa-plus"></i> @lang('language.add_btn')
                     </button>
                 </div>
             </div>
