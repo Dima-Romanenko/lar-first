@@ -36,15 +36,18 @@
                                 <div>{{ $task->name }}</div>
                             </td>
 
-                            <td>
+                            <td class="d-f">
                                 <!-- TODO: Кнопка Удалить -->
-                                <form action="{{ url('task/'.$task->id) }}" method="POST">
+                                <form action="{{ route('tasks.delete',$task->id) }}" method="post">
+                                    {{ method_field('delete') }}
                                     {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i> @lang('language.delete_btn')
-                                    </button>
+                                    <input type="submit" class="btn btn-danger" value="@lang('language.delete_btn')">
+                                </form>
+                                <!-- TODO: Кнопка Изменить -->
+                                <form action="{{ route('tasks.edit', $task->id) }}" method="post">
+                                    {{ method_field('get') }}
+                                    {{ csrf_field() }}
+                                    <input type="submit" class="btn btn-warning" value="Обновить">
                                 </form>
                             </td>
                         </tr>

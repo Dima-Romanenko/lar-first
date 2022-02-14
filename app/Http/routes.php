@@ -48,6 +48,25 @@ Route::delete('/task/{task}', function(App\Models\Task $task) {
 
     return redirect()->back();
 
-});
+})->name('tasks.delete');
 
 Route::get('locale/{locale}', 'MainController@changeLocale')->name('locale');
+
+Route::get('tasks/{task}/edit', function(\App\Models\Task $task) {
+    return view('tasks.edit', ['task' => $task]);
+})->name('tasks.edit');
+
+Route::PUT('tasks/{task}', function(Illuminate\Http\Request $request, \App\Models\Task $task){
+    $validator = Validator::make($request->all(),[
+        'name'=>'required|max:5',
+    ]);
+    if($validator->fails()) {
+        return redirect(route('tasks.edit', $task->id))
+            ->withInput()
+            ->withErrors($validator);
+    }
+    $task->name = $request->name;
+    $task->save();
+    return redirect(route('tasks.index'));
+
+})->name('tasks.update');
