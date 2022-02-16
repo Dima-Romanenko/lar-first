@@ -19,9 +19,9 @@
 
                 <div class="col-sm-6">
                     @if(count($errors)>0)
-                        <input type="text" name="name" id="task" class="form-control" value="{{ $task->name }}">
+                        <input type="text" name="name" id="task" class="form-control"  value="{{ old('name') }}">
                     @else
-                        <input type="text" name="name" id="task" class="form-control" value="{{ old('name') }}">
+                        <input type="text" name="name" id="task" class="form-control"  value="{{ $task->name }}">
                     @endif
                 </div>
             </div>
