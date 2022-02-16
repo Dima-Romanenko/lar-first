@@ -18,7 +18,11 @@
                 <label for="task" class="col-sm-3 control-label">@lang('language.task')</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="name" id="task" class="form-control" value="{{ $task->name }}">
+                    @if(count($errors)>0)
+                        <input type="text" name="name" id="task" class="form-control" value="{{ $task->name }}">
+                    @else
+                        <input type="text" name="name" id="task" class="form-control" value="{{ old('name') }}">
+                    @endif
                 </div>
             </div>
 
